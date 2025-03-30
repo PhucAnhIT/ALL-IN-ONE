@@ -16,17 +16,11 @@ Module này mở khóa các app hiện nay trên mạng xã hội.
 ✅ Hỗ trợ nhiều ứng dụng phổ biến
 
 ## Import Module to Shadowrocket
-Click the button below to open Shadowrocket and import the module automatically:
+Nhấn vào nút dưới đây để mở Shadowrocket và nhập module tự động:
 
-[![Open in Shadowrocket](https://img.shields.io/badge/Open%20in-Shadowrocket-blue)](shadowrocket://add/sub?url=https://raw.githubusercontent.com/PhucAnhIT/ALL-IN-ONE/refs/heads/main/ALL_IN_ONE.modules)
+[![Open in Shadowrocket](https://img.shields.io/badge/Open%20in-Shadowrocket-blue)](shadowrocket://subscribe?url=https://raw.githubusercontent.com/PhucAnhIT/ALL-IN-ONE/refs/heads/main/ALL_IN_ONE.modules)
 
-## Cách sử dụng
-1. Cài đặt [Shadowrocket](https://apps.apple.com/us/app/shadowrocket/id932747118) trên thiết bị iOS của bạn.
-2. Click vào nút trên hoặc sao chép và dán đường dẫn sau vào Shadowrocket:
-   ```
-   https://raw.githubusercontent.com/PhucAnhIT/ALL-IN-ONE/refs/heads/main/ALL_IN_ONE.modules
-   ```
-3. Kích hoạt và trải nghiệm ngay!
+Hoặc nhấn vào [đây](shadowrocket://subscribe?url=https://raw.githubusercontent.com/PhucAnhIT/ALL-IN-ONE/refs/heads/main/ALL_IN_ONE.modules) để mở Shadowrocket trực tiếp.
 
 ## Liên hệ
 - **Tác giả**: Phuc Anh IT
