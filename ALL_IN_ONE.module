@@ -6,11 +6,13 @@
 # Credit: Quoc Chien, Đỗ X Hùng, ѵăռŧυấռ 💤, Nightmarket
 # Mã nguồn này đã được fix vào 04/05/2025
 # Ai dùng module này nếu gắn trên TikTok hoặc Facebook hãy ghi @PhucAnhIT để tôn trọng tác giả!
+# Tất cả các crack app đều sủ dụng các nguồn uy tín hàng đầu nên an tâm sủ dụng.!
 
 [General]
 bypass-system = true
 skip-proxy = *.local, *.crashlytics.com
 tun-excluded-routes = 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12
+user-agent = Locket/1.0.0 (iPhone; iOS 26; Scale/3.00)
 
 [Rule]
 AND,((DOMAIN-SUFFIX,googlevideo.com), (PROTOCOL,UDP)),REJECT
@@ -51,4 +53,3 @@ iScreenn=type=http-response,pattern=^https:\/\/buy\.itunes\.apple\.com\/verifyRe
 Usage=type=http-response,pattern=^https:\/\/api\.revenuecat\.com\/v1\/subscribers.+,requires-body=1,script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/Usage.js
 美图秀秀=type=http-response,pattern=^https?:\/\/(h5|api)\.xiuxiu\.meitu\.com\/v\d\/(h\d\/vip|vip|user)\/,requires-body=1,script-path=https://raw.githubusercontent.com/I-am-R-E/QuantumultX/main/JavaScript/MeiTuXiuXiu.js
 
-user-agent = Locket/1.0.0 (iPhone; iOS 26; Scale/3.00)
