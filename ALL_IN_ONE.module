@@ -3,7 +3,7 @@
 # Shadowrocket Configuration - All IN ONE
 # Cập nhật: 23/12/2025 06:17
 # Bản Quyền Thuộc Về Phuc Anh IT 
-# Credit: Quoc Chien, Đỗ X Hùng, ѵăռŧυấռ 💤
+# Credit: Quoc Chien, Đỗ X Hùng, ѵăռŧυấռ 💤, Nightmarket
 # Mã nguồn này đã được fix vào 04/05/2025
 # Ai dùng module này nếu gắn trên TikTok hoặc Facebook hãy ghi @PhucAnhIT để tôn trọng tác giả!
 
@@ -50,3 +50,5 @@ AlohaVPN浏览器=type=http-response,pattern=https://api.alohaprofile.com/v1/pro
 iScreenn=type=http-response,pattern=^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt$,requires-body=1,script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/iScreenn.js
 Usage=type=http-response,pattern=^https:\/\/api\.revenuecat\.com\/v1\/subscribers.+,requires-body=1,script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/Usage.js
 美图秀秀=type=http-response,pattern=^https?:\/\/(h5|api)\.xiuxiu\.meitu\.com\/v\d\/(h\d\/vip|vip|user)\/,requires-body=1,script-path=https://raw.githubusercontent.com/I-am-R-E/QuantumultX/main/JavaScript/MeiTuXiuXiu.js
+
+user-agent = Locket/1.0.0 (iPhone; iOS 26; Scale/3.00)
