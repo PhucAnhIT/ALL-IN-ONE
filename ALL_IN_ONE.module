@@ -8,15 +8,9 @@
 # Ai dùng module này nếu gắn trên TikTok hoặc Facebook hãy ghi @PhucAnhIT để tôn trọng tác giả!
 # Tất cả các crack app đều sủ dụng các nguồn uy tín hàng đầu nên an tâm sủ dụng.!
 
-[General]
-bypass-system = true
-skip-proxy = *.local, *.crashlytics.com
-tun-excluded-routes = 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12
-user-agent = Locket/1.0.0 (iPhone; iOS 26; Scale/3.00)
-
 [Rule]
-AND,((DOMAIN-SUFFIX,googlevideo.com), (PROTOCOL,UDP)),REJECT
-AND,((DOMAIN,youtubei.googleapis.com), (PROTOCOL,UDP)),REJECT
+AND,((DOMAIN-SUFFIX,googlevideo.com),(PROTOCOL,UDP)),REJECT
+AND,((DOMAIN,youtubei.googleapis.com),(PROTOCOL,UDP)),REJECT
 
 [URL Rewrite]
 (^https?://[\w-]+\.googlevideo\.com/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+) $1$2$3 302
@@ -26,30 +20,84 @@ AND,((DOMAIN,youtubei.googleapis.com), (PROTOCOL,UDP)),REJECT
 ^https?://s\.youtube\.com/api/stats/qoe\?adcontext _ reject-200
 
 [Header Rewrite]
-http-request ^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/user-customization-service\/v1\/customize$ header-del if-none-match
+^https?://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$) header-del x-revenuecat-etag
+^https?://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$) header-del X-RevenueCat-ETag
+
+# ===== Spotify iOS15 Header Rewrite =====
+http-request 
+^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/user-customization-service\/v1\/customize$ header-del if-none-match
 
 [MITM]
-hostname = %APPEND% api.revenuecat.com, buy.itunes.apple.com, api.picsart.com, us-central1-alight-creative.cloudfunctions.net, api.adapty.io, carrotweather.herokuapp.com, lcs-mobile-cops.adobe.io, order.creativeappnow.com, api.mwm-users.com, us-central1-muslim-pro-app.cloudfunctions.net, api.gptkeyboard.app, prod.studysmarter.de, api.qonversion.io, api.blinkist.com, subscription.grammarly.com, api.esound.app, api.purchasely.io, spclient.wg.spotify.com, api-sub.meitu.com, redirector*.googlevideo.com, *.googlevideo.com, www.youtube.com, s.youtube.com, youtubei.googleapis.com, api-mobile.soundcloud.com, photos.adobe.io, 
-api.deepfaker.app, purchases.ws.pho.to, pro.smallpdf.com, api.alohaprofile.com, piccollage.com, spclient.wg.spotify.com, h5.xiuxiu.meitu.com, api.xiuxiu.meitu.com, raw.githubusercontent.com
+hostname = %APPEND%, *.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, -redirector*.googlevideo.com, premium*.truecaller.com, sub.store, api.revenuecat.com, api-mobile.soundcloud.com, api.picsart.com, us-central1-alight-creative.cloudfunctions.net, api-sub.meitu.com, api-account.kinemasters.com, ap*.intsig.net, api.mr.pixocial.com, newbeee-api.beautyplus.com, spclient.wg.spotify.com, *spclient.spotify.com, api.deepfaker.app, buy.itunes.apple.com, mobile-api.adguard.org, photos.adobe.io, api.alohaprofile.com, api.picsart.c*, api.meiease.c,*, api.revenuecat.com, yueh.app168.cc.
 
 [Script]
-revenuecat = type=http-response, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$), script-path=https://raw.githubusercontent.com/vantuan380/lockets/refs/heads/gold/Locket_Gold_T8.js, requires-body=true, max-size=-1, timeout=60
-deleteHeader = type=http-request, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers), script-path=https://raw.githubusercontent.com/vantuan/lockcrack/refs/heads/module/deleteheader.js, timeout=60
-http-response ^https://api\.revenuecat\.com/.+/(receipts$|subscribers/[^/]+$) script-path=https://raw.githubusercontent.com/quocchienn/Make/refs/heads/crack/crack.js, requires-body=true, timeout=5, tag=Crack
-http-request ^https://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$) script-path=https://raw.githubusercontent.com/quocchienn/Make/refs/heads/crack/VSCO.js, requires-body=true, timeout=5, tag=VSCO
-http-request https://api.picsart.com/gw-v2/shop/subscription/apple/purchases script-path=https://raw.githubusercontent.com/quocchienn/Make/refs/heads/crack/PicsArt.js, requires-body=true, timeout=5, tag=PicsArt
-http-response https://us-central1-alight-creative.cloudfunctions.net/getAccountStatusAndLicenses script-path=https://raw.githubusercontent.com/quocchienn/Make/refs/heads/crack/AlightMotion.js, requires-body=true, timeout=5, tag=Alight Motion
-http-response https://api.sandbox.love/accounts/current script-path=https://raw.githubusercontent.com/quocchienn/Make/refs/heads/crack/SandBox.js, requires-body=true, timeout=5, tag=Sandbox Pixel Art
-youtube.response = type=http-response,pattern=^https://youtubei\.googleapis\.com/youtubei/v1/(browse|next|player|search|reel/reel_watch_sequence|guide|account/get_setting|get_watch),requires-body=1,max-size=-1,binary-body-mode=1,engine=script,script-path=https://raw.githubusercontent.com/dhungx/modules-shadowrocket/refs/heads/main/js/Yt/youtube.response.preview.js,argument="{\"lyricLang\":\"{{{ngôn ngữ dịch lời bài hát}}}\",\"captionLang\":\"{{{ngôn ngữ dịch phụ đề}}}\",\"blockUpload\":{{{chặn nút tải lên}}},\"blockImmersive\":{{{chặn nút chọn đoạn}}},\"debug\":{{{kích hoạt chế độ gỡ lỗi}}}}"
+#Soda
+yueh=type=http-response,pattern=^http:\/\/yueh\.app168\.cc\/(first|panda|jiaopian|emoji|manghe)\/iap\/check\.php$,requires-body=1,script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/yueh.js
+
+#photoroom
+PhotoRoom=type=http-response,pattern=^https?:\/\/api\.revenuecat\.com\/v1\/(subscribers\/[^\/]+$|receipts$),requires-body=1,script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/PhotoRoom.js
+
+#Picart
+Picsart=type=http-response,pattern=https:\/\/api\.(picsart|meiease)\.c(n|om)\/users\/show\/me\.json,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/PicsArt.js
+
+#NiceGram
+Nicegram=type=http-request,pattern=^https?:\/\/restore-access\.indream\.app\/restoreAccess\?id=\w+$,requires-body=0,max-size=0,script-path=https://raw.githubusercontent.com/I-am-R-E/Functional-Store-Hub/Master/Nicegram/Script/Nicegram.js,script-update-interval=0
+
+#Aloha
+AlohaVPN=type=http-response,pattern=https://api.alohaprofile.com/v1/profile_info,requires-body=1,script-path=https://raw.githubusercontent.com/Marol62926/MarScrpt/main/aloha.js
+
+#LightRoom
+LightRoom=type=http-response,pattern=^https:\/\/photos\.adobe\.io\/v2\/accounts*,requires-body=1,script-path=https://raw.githubusercontent.com/litieyin/AD_VIP/main/Script/lightroom.js
+
+#ADGuard
+AdGuard=type=http-response,pattern=^https?:\/\/mobile-api\.adguard\.org\/api\/.+\/ios_validate_receipt,requires-body=1,script-path=https://raw.githubusercontent.com/yqc007/QuantumultX/master/AdGuardProCrack.js
+
+#iScreenns
+iScreenn=type=http-response,pattern=^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt$,requires-body=1,script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/iScreenn.js
+
+#Sub-Store
+Sub-StoreCore=type=http-request,pattern=^https?:\/\/sub\.store\/((download)|api\/(preview|sync|(utils\/node-info))),script-path=https://github.com/sub-store-org/Sub-Store/releases/latest/download/sub-store-1.min.js,requires-body=true,timeout=120
+Sub-Store Simple=type=http-request,pattern=^https?:\/\/sub\.store,script-path=https://github.com/sub-store-org/Sub-Store/releases/latest/download/sub-store-0.min.js,requires-body=true
+Sub-Store Sync=type=cron,cronexp=0 0 * * *,wake-system=1,timeout=120,script-path=https://github.com/sub-store-org/Sub-Store/releases/latest/download/cron-sync-artifacts.min.js
+
+#YouTube Premium
+youtuberequest = type=http-request,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence|get_watch),requires-body=1,max-size=-1,binary-body-mode=1,engine=jsc,script-path=https://raw.githubusercontent.com/duyvinh09/Module_IOS/refs/heads/main/js/youtube.response.js
+youtube.response = type=http-response,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch),requires-body=1,max-size=-1,binary-body-mode=1,script-path=https://raw.githubusercontent.com/duyvinh09/Module_IOS/refs/heads/main/js/youtube.response.js,argument="{"lyricLang":"vi","captionLang":"vi","blockUpload":true,"blockImmersive":true,"debug":false}"
+
+#Spotify
 spotify-json = type=http-request,pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(artistview\/v1\/artist|album-entity-view\/v2\/album)\/,requires-body=0,script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-json.js
 spotify-proto = type=http-response,pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$,requires-body=1,binary-body-mode=1,max-size=0,script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-proto.js,script-update-interval=0
-WinkForeverVipCrack.js=type=http-response,pattern=^https?:\/\/api-sub\.meitu\.com\/v2\/user\/vip_info_by_group\.json,requires-body=1,script-path=https://raw.githubusercontent.com/yqc007/QuantumultX/master/WinkForeverVipCrack.js
-SoundCloudGo+=type=http-response,pattern=https://api-mobile.soundcloud.com/configuration/ios,requires-body=1,script-path=https://raw.githubusercontent.com/Marol62926/MarScrpt/main/soundcloud.js
-LightRoom=type=http-response,pattern=^https:\/\/photos\.adobe\.io\/v2\/accounts*,requires-body=1,script-path=https://raw.githubusercontent.com/litieyin/AD_VIP/main/Script/lightroom.js
-deepfaker=type=http-response,pattern=^https:\/\/api\.deepfaker\.app\/api\/v1\/account\/update-profile,requires-body=1,script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/deepfaker.js
-Piccollage解锁=type=http-response,pattern=https://piccollage.com/api/graphql,requires-body=1,script-path=https://raw.githubusercontent.com/Marol62926/MarScrpt/main/picCollage.js
-AlohaVPN浏览器=type=http-response,pattern=https://api.alohaprofile.com/v1/profile_info,requires-body=1,script-path=https://raw.githubusercontent.com/Marol62926/MarScrpt/main/aloha.js
-iScreenn=type=http-response,pattern=^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt$,requires-body=1,script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/iScreenn.js
-Usage=type=http-response,pattern=^https:\/\/api\.revenuecat\.com\/v1\/subscribers.+,requires-body=1,script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/Usage.js
-美图秀秀=type=http-response,pattern=^https?:\/\/(h5|api)\.xiuxiu\.meitu\.com\/v\d\/(h\d\/vip|vip|user)\/,requires-body=1,script-path=https://raw.githubusercontent.com/I-am-R-E/QuantumultX/main/JavaScript/MeiTuXiuXiu.js
 
+#SoundCloud
+SoundCloudGo=type=http-response,pattern=https://api-mobile.soundcloud.com/configuration/ios,requires-body=1,script-path=https://raw.githubusercontent.com/duyvinh09/Module_IOS/refs/heads/main/js/SoundCloudGoPlus.js
+
+#AlightMotion
+AlightMotion = type=http-response,pattern=^https:\/\/us-central1-alight-creative\.cloudfunctions\.net\/getAccountStatusAndLicenses,requires-body=true,max-size=131072,timeout=10,script-path=https://raw.githubusercontent.com/duyvinh09/Module_IOS/refs/heads/main/js/AlightMotion.js
+
+#PicsArt
+PicsArt = type=http-request,pattern=^https:\/\/api\.picsart\.com\/gw-v2\/shop\/subscription\/apple\/purchases,script-path=https://raw.githubusercontent.com/duyvinh09/Module_IOS/refs/heads/main/js/PicsArt.js,requires-body=true,timeout=60
+
+#Wink
+Wink =type=http-response,pattern=^https?:\/\/api-sub\.meitu\.com\/v2\/user\/vip_info_by_group\.json,requires-body=1,script-path=https://raw.githubusercontent.com/duyvinh09/Module_IOS/refs/heads/main/js/WinkVipCrack.js
+
+#Truecaller
+Truecaller = type=http-response,pattern=^https://premium-(.+)\.truecaller\.com/v\d/(subscriptions|products\/apple),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/duyvinh09/Module_IOS/refs/heads/main/js/TrueCaller.js
+
+#Kinemaster
+Kinemaster = type=http-response,pattern=^https:\/\/api-account\.kinemasters\.com\/v\d\/user\/subscribe$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/duyvinh09/Module_IOS/refs/heads/main/js/Kinemaster.js
+
+#CamScanner
+Camscanner = type=http-response,pattern=https:\/\/(api|api-cs.*)\.intsig\.net\/purchase\/cs\/query_prop,requires-body=1,script-path=https://raw.githubusercontent.com/duyvinh09/Module_IOS/refs/heads/main/js/camScanner.js
+
+#BeautyPlus
+BeautyPlus = type=http-response,pattern=https:\/\/(api\.mr\.pixocial\.com\/v1\/manual_unlock|newbeee-api\.beautyplus\.com\/api\/v1\/asset\/balance),requires-body=true,max-size=-1,timeout=60,script-path=https://raw.githubusercontent.com/duyvinh09/Module_IOS/refs/heads/main/js/BeautyPlus.js
+
+#Locket
+revenuecat = type=http-response,pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$),requires-body=true,max-size=-1,timeout=60,script-path=https://raw.githubusercontent.com/duyvinh09/Module_IOS/refs/heads/main/js/Locket_DuyVinh09.js
+deleteHeader = type=http-request,pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers),script-path=https://raw.githubusercontent.com/duyvinh09/Module_IOS/refs/heads/main/js/deleteHeader.js,timeout=60
+
+# Deepfake
+deepfaker=type=http-response,pattern=^https:\/\/api\.deepfaker\.app\/api\/v1\/account\/update-profile,requires-body=1,script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/deepfaker.js
+
+[Map Local]
+^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad data-type=text data="" status-code=200
