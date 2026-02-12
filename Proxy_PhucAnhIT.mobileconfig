@@ -10,22 +10,28 @@
             <key>PayloadVersion</key>
             <integer>1</integer>
             <key>PayloadIdentifier</key>
-            <string>com.phucanh.vpn1</string>
+            <string>com.phucanh.vpn.1</string>
             <key>PayloadUUID</key>
-            <string>A1B1-C1D1-E1F1</string>
+            <string>B1A1C1D1-E1F1-41A1-B1C1-D1E1F1A1B1C1</string>
             <key>UserDefinedName</key>
-            <string>FB_01_US_NewYork</string>
+            <string>FB_01_US_Proxy</string>
             <key>VPNType</key>
-            <string>IPSec</string> <key>IPSec</key>
+            <string>IKEv2</string>
+            <key>IKEv2</key>
             <dict>
-                <key>AuthenticationMethod</key>
-                <string>SharedSecret</string>
                 <key>RemoteAddress</key>
                 <string>31.59.20.176</string>
-                <key>LocalIdentifier</key>
+                <key>RemoteIdentifier</key>
+                <string>31.59.20.176</string>
+                <key>AuthenticationMethod</key>
+                <string>None</string>
+                <key>ExtendedAuthEnabled</key>
+                <integer>1</integer>
+                <key>AuthName</key>
                 <string>hoidapvs</string>
-                <key>SharedSecret</key>
-                <data>OGppYmJoNDN0MDBj</data> </dict>
+                <key>AuthPassword</key>
+                <string>8jibbh43t00c</string>
+            </dict>
             <key>Proxies</key>
             <dict>
                 <key>HTTPEnable</key>
@@ -42,13 +48,13 @@
         </dict>
     </array>
     <key>PayloadDisplayName</key>
-    <string>PhucAnhIT - VPN & GPS US</string>
+    <string>PhucAnhIT - 10 Proxy US</string>
     <key>PayloadIdentifier</key>
-    <string>com.phucanh.profile</string>
+    <string>com.phucanh.config</string>
     <key>PayloadType</key>
     <string>Configuration</string>
     <key>PayloadUUID</key>
-    <string>D9A2B3C4-E5F6-7A8B</string>
+    <string>F2A2B2C2-D2E2-42F2-A2B2-C2D2E2F2G2H2</string>
     <key>PayloadVersion</key>
     <integer>1</integer>
 </dict>
