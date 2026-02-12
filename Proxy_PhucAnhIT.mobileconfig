@@ -13,12 +13,20 @@
             <string>com.phucanh.vpn1</string>
             <key>PayloadUUID</key>
             <string>A1B1-C1D1-E1F1</string>
-            <key>PayloadDisplayName</key>
-            <string>FB_Proxy_01_US</string>
             <key>UserDefinedName</key>
-            <string>FB_Proxy_01_US</string>
+            <string>FB_01_US_NewYork</string>
             <key>VPNType</key>
-            <string>HTTP</string> <key>Proxies</key>
+            <string>IPSec</string> <key>IPSec</key>
+            <dict>
+                <key>AuthenticationMethod</key>
+                <string>SharedSecret</string>
+                <key>RemoteAddress</key>
+                <string>31.59.20.176</string>
+                <key>LocalIdentifier</key>
+                <string>hoidapvs</string>
+                <key>SharedSecret</key>
+                <data>OGppYmJoNDN0MDBj</data> </dict>
+            <key>Proxies</key>
             <dict>
                 <key>HTTPEnable</key>
                 <integer>1</integer>
@@ -32,9 +40,9 @@
                 <string>8jibbh43t00c</string>
             </dict>
         </dict>
-        </array>
+    </array>
     <key>PayloadDisplayName</key>
-    <string>PhucAnhIT - 10 Proxy US</string>
+    <string>PhucAnhIT - VPN & GPS US</string>
     <key>PayloadIdentifier</key>
     <string>com.phucanh.profile</string>
     <key>PayloadType</key>
